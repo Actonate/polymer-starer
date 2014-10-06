@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <script src="/bower_components/platform/platform.js"></script>
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+    </head>
+    <body>
+        <!-- Create a polymer element for donut chart -->
+        <polymer-element name="chart-donut">
+            <template>
+                <div id="container" style="height: 400px"></div>
+            </template>
+        <script type="text/javascript">
+        Polymer("chart-donut",{
+            ready: function() {
+               var options = {
+                    chart: {
+                        type: 'pie',
+                        options3d: {
+                            enabled: true,
+                            alpha: 45
+                        },
+                        renderTo: this.$.container
+                    },
+                    title: {
+                        text: 'Contents of Highsoft\'s weekly fruit delivery'
+                    },
+                    subtitle: {
+                        text: '3D donut in Highcharts'
+                    },
+                    plotOptions: {
+                        pie: {
+                            innerSize: 100,
+                            depth: 45
+                        }
+                    },
+                    series: [{
+                        name: 'Delivered amount',
+                        data: [
+                            ['Bananas', 8],
+                            ['Kiwi', 3],
+                            ['Mixed nuts', 1],
+                            ['Oranges', 6],
+                            ['Apples', 8],
+                            ['Pears', 4],
+                            ['Clementines', 4],
+                            ['Reddish (bag)', 1],
+                            ['Grapes (bunch)', 1]
+                        ]
+                    }]
+                }
+                console.log(options);
+                var chart= new Highcharts.Chart(options);
+            }
+            
+        });
+        </script>
+    </polymer-element>
+    <!-- Uses the created polymer element -->
+    <chart-donut></chart-donut>
+    </body>

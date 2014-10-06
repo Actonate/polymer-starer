@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script src="/bower_components/platform/platform.js"></script>
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+    </head>
+    <body>
+        <!-- Create a polymer element for bar chart -->
+        <polymer-element name="chart-bar">
+            <template>
+                <div id="container" style="height: 400px"></div>
+            </template>
+        <script type="text/javascript">
+        Polymer("chart-bar",{
+            ready: function() {
+               var options = {
+                    chart: {
+                        type: 'bar',
+                        renderTo: this.$.container
+                    },
+                    title: {
+                        text: 'Historic World Population by Region'
+                    },
+                    subtitle: {
+                        text: 'Source: Wikipedia.org'
+                    },
+                    xAxis: {
+                        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Population (millions)',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' millions'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -40,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Year 1800',
+                        data: [107, 31, 635, 203, 2]
+                    }, {
+                        name: 'Year 1900',
+                        data: [133, 156, 947, 408, 6]
+                    }, {
+                        name: 'Year 2008',
+                        data: [973, 914, 4054, 732, 34]
+                    }]
+                }
+                console.log(options);
+                var chart= new Highcharts.Chart(options);
+            }
+            
+        });
+        </script>
+    </polymer-element>
+    <!-- Uses the created polymer element -->
+    <chart-bar></chart-bar>
+    </body>
