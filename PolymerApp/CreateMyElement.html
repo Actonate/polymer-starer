@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="/bower_components/platform/platform.js"></script>
+		<link rel="import" href="/bower_components/polymer/polymer.html">
+		<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+		<link rel="import" href="/bower_components/paper-dialog/paper-dialog-transition.html">
+		<link rel="import" href="/bower_components/paper-input/paper-input.html">
+		<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+		<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	</head>
+	<body>
+		<!--Creates a custom polymer element named "my-element" which is like a login box-->
+		<polymer-element name="my-element">
+			<template>
+				<paper-dialog heading="Login" opened="true" autoCloseDisabled="true">
+					<paper-input label="Username" floatingLabel="true"></paper-input>
+					<paper-input type="password" label="Password" floatingLabel="true"></paper-input>
+					<paper-checkbox label="Remember Me" checked></paper-checkbox>
+					<paper-button label="Login" raisedButton style="background: #4285f4;color: #fff;" affirmative></paper-button>
+					<content></content>
+				</paper-dialog>
+			</template>
+			<script>
+			//Registers the created element with the browser
+			  Polymer({});
+		  	</script>
+		</polymer-element>
+	</body>
+</html>
